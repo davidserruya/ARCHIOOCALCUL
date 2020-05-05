@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import controller.ControlOperation;
 import model.OperationModel;
+import settings.ApplicationProperties;
 
 public class Interface {
 	private Scanner sc = new Scanner(System.in);
@@ -13,18 +14,18 @@ public class Interface {
 	public void afficher() {
 		double a, b;
 		String operation;
-		System.out.print("Veuillez saisir un nombre : ");
+		System.out.print(ApplicationProperties.readProperty("CHOSE_NUMBER_MESSAGE", ""));
 		a = sc.nextDouble();
-		System.out.print("operation : ");
+		System.out.print(ApplicationProperties.readProperty("CHOSE_OPERATION_MESSAGE", ""));
 		operation = sc.next();
-		System.out.print("Veuillez saisir un autre nombre : ");
+		System.out.print(ApplicationProperties.readProperty("CHOSE_2ND_NUMBER_MESSAGE", ""));
 		b = sc.nextDouble();
 
 		this.operation_termes_server = new OperationModel(a, b, operation);
 	}
 
 	public void afficherResultat(double result) {
-		System.out.println("\n le résultat est : " + result);
+		System.out.println( ApplicationProperties.readProperty("RESULT_MESSAGE", "") + result);
 	}
 
 	public ControlOperation getControl() {

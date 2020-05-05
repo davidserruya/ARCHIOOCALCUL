@@ -4,15 +4,26 @@ import controller.ControlOperation;
 import exception.CalculatriceException;
 import server.RequeteCalculatrice;
 import server.ServiceCalculatrice;
+import settings.ApplicationProperties;
 import view.Interface;
 
 public class Main {
 
 	public static void main(String[] args) {
-		// VUE
+		
+		// Langage's gestion
+		String lang = "FR";
+		if(lang.equals("FR")) {
+			ApplicationProperties.getInstance("server/settings/messages_fr.properties");
+		}else {
+			ApplicationProperties.getInstance("server/settings/messages_en.properties");
+		}
+		
+		
+		// View
 		Interface view = new Interface();
 
-		// controller
+		// Controller
 		ControlOperation controller = new ControlOperation(view);
 
 		// START SERVER
