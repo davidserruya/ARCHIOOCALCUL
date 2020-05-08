@@ -9,11 +9,14 @@ public class OperationModel implements Serializable {
 	private double y;
 	private String operation;
 	private double result;
+	private String error = null;
+	private int errorCode = -1;
 
 	public OperationModel(double x, double y, String operation) {
 		this.x = x;
 		this.y = y;
 		this.operation = operation;
+
 	}
 
 	public double getX() {
@@ -48,4 +51,19 @@ public class OperationModel implements Serializable {
 		this.result = result;
 	}
 
+	public String getError() {
+		return error;
+	}
+
+	public void setError(String error) {
+		this.error = error;
+	}
+
+	public int getErrorCode() {
+		return errorCode;
+	}
+
+	public void setErrorCode(int errorCode) {
+		this.errorCode = errorCode;
+	}
 }

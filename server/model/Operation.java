@@ -1,10 +1,12 @@
 package model;
 
+import exception.CalculatriceException;
+
 public abstract class Operation {
 	private double x;
 	private double y;
 
-	public abstract double calculer(double x, double y);
+	public abstract double calculer(double x, double y) throws CalculatriceException;
 
 	public Operation() {
 		super();

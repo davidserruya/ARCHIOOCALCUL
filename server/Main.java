@@ -10,16 +10,15 @@ import view.Interface;
 public class Main {
 
 	public static void main(String[] args) {
-		
-		// Langage's gestion
+
+		// Langage
 		String lang = "FR";
-		if(lang.equals("FR")) {
+		if (lang.equals("FR")) {
 			ApplicationProperties.getInstance("server/settings/messages_fr.properties");
-		}else {
+		} else {
 			ApplicationProperties.getInstance("server/settings/messages_en.properties");
 		}
-		
-		
+
 		// View
 		Interface view = new Interface();
 
@@ -33,7 +32,6 @@ public class Main {
 				try {
 					ServiceCalculatrice.lunch();
 				} catch (ClassNotFoundException | IOException | CalculatriceException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -48,7 +46,6 @@ public class Main {
 					view.afficher();
 					RequeteCalculatrice.call(view.getOperationTermesServer(), view);
 				} catch (ClassNotFoundException | IOException | InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}

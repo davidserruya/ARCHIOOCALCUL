@@ -34,8 +34,13 @@ public class RequeteCalculatrice {
 
 		ois = new ObjectInputStream(socket.getInputStream());
 		OperationModel result = (OperationModel) ois.readObject();
-		LOGGER.log(Level.INFO, "Received response : " + result.getResult());
-		view.afficherResultat(result.getResult());
+		if (result.getError() == null) {
+			LOGGER.log(Level.INFO, "Received response : " + result.getResult());
+			view.afficherResultat(result.getResult());
+		} else {
+			LOGGER.log(Level.WARNING, "(Error " + result.getErrorCode() + ") " + result.getError());
+			view.afficherError(result.getError());
+		}
 
 		socket.close();
 

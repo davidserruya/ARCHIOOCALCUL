@@ -34,9 +34,12 @@ public class ServiceCalculatrice {
 			LOGGER.log(Level.INFO, "Message Received: " + operation);
 
 			OperationModel result = Calculate.calculate(operation);
-
 			oos.writeObject(result);
-			LOGGER.log(Level.INFO, "Response sent: " + result);
+			if (result.getError() == null) {
+				LOGGER.log(Level.INFO, "Response sent: " + result);
+			} else {
+				LOGGER.log(Level.WARNING, "(Error " + result.getErrorCode() + ") " + result.getError());
+			}
 
 			socket.close();
 

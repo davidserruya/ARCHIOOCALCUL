@@ -1,10 +1,22 @@
 package exception;
 
-public class CalculatriceException extends Throwable {
+@SuppressWarnings("serial")
+public class CalculatriceException extends Exception {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 7971514968052113573L;
+	private final int code;
+	private final String defaultMessage;
 
+	public CalculatriceException(int code, String defaultMessage) {
+		super();
+		this.code = code;
+		this.defaultMessage = defaultMessage;
+	}
+
+	public int getCode() {
+		return code;
+	}
+
+	public String getDefaultMessage() {
+		return defaultMessage;
+	}
 }
